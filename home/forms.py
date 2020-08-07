@@ -22,7 +22,7 @@ class AddPropertyForm(ModelForm):
 		widgets = {
 		'name': forms.TextInput(attrs={"class":"myform-control","placeholder":"Enter Property name"}),
 		'city': forms.Select(attrs={"class":"myform-control invert"}),
-		'contact': forms.NumberInput(attrs={"class":"myform-control"}),
+		'contact': forms.TextInput(attrs={"class":"myform-control"}),
 		'address': forms.TextInput(attrs={"class":"myform-control"})
 		}
 		
