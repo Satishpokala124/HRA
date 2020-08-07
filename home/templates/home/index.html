@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>House Renting App</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	  <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+	  <link rel="icon" type="text/css" href="{% static 'images/icon.ico' %}">
+	</head>
+	<body style="color:lightblue;">
+		<div class="container c1" style="">
+			<div class="jumbotron">
+				<center><img class="zoom color" src="{% static 'images/icon512.png' %}" width="200px"></center><br>
+				<center style="font-size: 200%">Who are you ?</center>
+				<div class="container c2" style="width: 80%">
+					<div class="row" style="margin-top: 5vh">
+						<div class="col-sm">
+							<a class="btn" href="../signUp/1" style="width: 100%; margin: 10px">
+								<center>
+									<div style="color:lightblue; text-decoration: none; font-size: 1.5rem;">Tenant</div>
+								</center>
+							</a>
+						</div>
+						<div class="col-sm">
+							<a class="btn" a href="../signUp/0" style="width: 100%; margin: 10px">
+								<center>
+									<div style="color:lightblue; text-decoration: none; font-size: 1.5rem;">Landlord</div>
+								</center>
+							</a>
+						</div>
+					</div>
+				</div><br>
+				<center>
+					<a href="{% url 'signIn' %}" style="color: #7a314f">Already have an account ?</a>
+				</center>
+			</div>
+		</div>
+	</body>
+</html>

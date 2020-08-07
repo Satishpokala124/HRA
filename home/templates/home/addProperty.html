@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Landlord Home</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	  <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+	  <link rel="icon" type="text/css" href="{% static 'images/icon.ico' %}">
+	  <style>
+	  	#id_image{margin:auto;}
+	  </style>
+	</head>
+	<nav class="navbar navbar-expand-md navbar-dark" style="background-color: rgba(0,0,0,0.5);">
+	  <a class="navbar-brand" href="{% url 'home' %}">
+	  	<img class="zoom color"src="{% static 'images/icon192.png' %}" width="80" height="80" alt="" loading="lazy">
+	  </a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarNav">
+	    <ul class="navbar-nav">
+	      <li class="nav-item active">
+	        <a class="nav-link" href="{% url 'home' %}">{{ user.username }}</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="{% url 'home' %}">Landlord<span class="sr-only">(current)</span></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="{% url 'properties' %}">Properties</a>
+	      </li>
+	      <li class="nav-item active">
+	        <a class="nav-link" href="{% url 'addProperty' %}">Add Property</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="{% url 'signOut' %}">SignOut</a>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
+	{% if messages %}
+		{% for message in messages %}
+			<div class="alert alert-{{message.tags}} alert-dismissable mess">
+				<button class="close" type="button" data-dismiss="alert">&times;</button>
+				<strong>{{message}}</strong>
+			</div>
+		{% endfor %}
+	{% endif %}
+	<body style="color:white">
+		<div class="container" style="width: 90%;margin: auto; margin-top: 10vh">
+			<div class="jumbotron" style="height: auto; padding-top: 5vh; padding-bottom: 5vh;" >
+				<center style="color: white; font-size: 2rem">Add your Property</center><br>
+				<form method="POST" enctype="multipart/form-data" style="width: 50%; margin: auto">
+					{% csrf_token %}
+					{% for field in form %}
+						{{ field.label_tag }}
+						{{ field }}
+					{% endfor %}
+					<br><br>
+					<center>
+						<button style="color:white" class="btn" type="submit">Submit</button>
+					</center>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

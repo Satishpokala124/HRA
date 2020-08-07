@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			{% if t %}
+			Tenant SignUp
+			{% else %}
+			Landlord SignUp 
+			{% endif %}
+		</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	  <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+	  <link rel="icon" type="text/css" href="{% static 'images/icon.ico' %}">
+	  <link rel="stylesheet" type="text/css" href="{% static 'css/signUp.css' %}">
+	</head>
+	<body style="color: white;">
+		<div class="container" style="width: 100%;">
+			{% if messages %}
+				{% for message in messages %}
+					<div class="alert alert-{{message.tags}} alert-dismissable mess">
+						<button class="close" type="button" data-dismiss="alert">&times;</button>
+						<strong>{{message}}</strong>
+					</div>
+				{% endfor %}
+			{% endif %}
+			<div class="jumbotron" style="height: auto; padding-top: 5vh; padding-bottom: 5vh;" >
+				<center style="color: white; font-size: 2rem">
+					{% if t %}
+					Tenant Registration
+					{% else %}
+					Landlord Registration
+					{% endif %}
+				</center><br>
+				<center><img class="zoom color"src="{% static 'images/icon192.png' %}" width="100px"></center>
+				<form method="POST">
+					{% csrf_token %}
+					{% for field in form %}
+						{{ field.label_tag }}
+						{{ field }}
+					{% endfor %}
+					<ul>
+						<li style="font-size: .7rem">Username should contain letters,digits and @/./+/-/_ only.</li>
+						<li style="font-size: .7rem">Your password can’t be too similar to your other personal information.</li>
+						<li style="font-size: .7rem">Your password must contain at least 8 characters.</li>
+						<li style="font-size: .7rem">Your password can’t be a commonly used password.</li>
+						<li style="font-size: .7rem">Your password can’t be entirely numeric.</li>
+					</ul>
+					<center>
+						<button class="btn" type="submit" style="color: white">Register</button>
+					</center>
+				</form>
+				<br>
+				<center>
+					<a href="{% url 'signIn' %}" style="color: #7a314f">Already have an account ?</a>
+				</center>
+			</div>
+		</div>
+	</body>
+</html>

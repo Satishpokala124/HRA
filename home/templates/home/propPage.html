@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>House Renting App</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	  <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+	  <link rel="icon" type="text/css" href="{% static 'images/icon.ico' %}">
+	</head>
+	<nav class="navbar navbar-expand-md navbar-dark" style="background-color: rgba(0,0,0,0.5);">
+	  <a class="navbar-brand" href="{% url 'home' %}">
+	  	<img class="zoom color" src="{% static 'images/icon192.png' %}" width="80" height="80" alt="" loading="lazy">
+	  </a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarNav">
+	    <ul class="navbar-nav">
+	      <li class="nav-item active">
+	        <a class="nav-link" href="{% url 'home' %}">{{ user.username }}</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="{% url 'home' %}">
+	        	{% if user.is_Landlord %}
+	        	Landlord
+	        	{% else %}
+	        	Tenant
+	        	{% endif %}
+	        	<span class="sr-only">(current)</span>
+	        </a>
+	      </li>
+	      {% if user.is_Landlord %}
+	      <li class="nav-item active">
+	        <a class="nav-link" href="{% url 'properties' %}">Properties</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="{% url 'addProperty' %}">Add Property</a>
+	      </li>
+	      {% endif %}
+	      <li class="nav-item">
+	        <a class="nav-link" href="{% url 'signOut' %}">SignOut</a>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
+	<body style="color: lightblue;">
+		<div class="container" style="height: 80vh">
+			<div class="jumbo-table" style="display: grid;align-items: center">
+				<div class="row">
+					<div class="col-lg-8">
+							<div class="card zoom" style="min-width: 200px;max-width: 500px;background-color: transparent;border: 1px solid gray; border-radius: 10px; margin: auto">
+							  <img class="card-img-top" src="{% static property.image.url %} " alt="Property">
+							  <div class="card-body">
+							    <center>
+							    	<h4 class="card-title">{{ property.name }}</h4>
+							    	{% if property.is_Vacant %}
+							    	<h6 style="color: lightgreen">Currently Vacant</h6>
+							    	{% else %}
+							    	<h6 style="color: orange">Currently Occupied</h6>
+							    	{% endif %}
+							    </center>
+							  </div>
+							</div>
+					</div>
+					<div class="col-lg-4" style="display: grid;align-items: center">
+							<div class="card" style="min-width: 200px;max-width: 500px;background-color: transparent;border-radius: 10px">
+								<p><em><h3><u>Landlord Details</u></h3></em></p>
+								<h6><em>Name:</em></h6> <h3>{{landlord.username}}</h3>
+								<h6><em>Contact:</em></h6> <h3>{{property.contact}}</h3>
+								<h6><em>Address:</em></h6> <h3>{{property.address}}</h3>
+							</div>
+					</div>
+				</div>
+				{% if user.is_Landlord %}
+				<div style="width: 60%;margin: auto">
+					<div class="row" style="margin-top: 5vh">
+						<div class="col-sm">
+							<a class="btn" href="{% url 'updateProperty' property.id %}" style="width: 100%; margin: 10px">
+								<center>
+									<div style="color:lightblue; text-decoration: none; font-size: 1.5rem;">Update</div>
+								</center>
+							</a>
+						</div>
+						<div class="col-sm">
+							<a class="btn btn-danger" a href="{% url 'deleteProperty' property.id %}" style="width: 100%; margin: 10px">
+								<center>
+									<div style="color: orange; text-decoration: none; font-size: 1.5rem;">Delete</div>
+								</center>
+							</a>
+						</div>
+					</div>
+				</div>
+				{% endif %}
+			</div>
+		</div>
+	</body>
+</html>

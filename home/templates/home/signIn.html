@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>SignIn</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	  <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+	  <link rel="icon" type="text/css" href="{% static 'images/icon.ico' %}">
+	  <link rel="stylesheet" type="text/css" href="{% static 'css/signIn.css' %}">
+	</head>
+	<body style="color: lightblue">
+		<div class="container" style="width: 90%;margin: auto; margin-top: 10vh; height: 90vh">
+					{% if form.errors %}
+					<div class="alert alert-warning alert-dismissable mess">
+						<button class="close" type="button" data-dismiss="alert">&times;</button>
+						<strong>Your username and password didn't match. Please try again.</strong>
+					</div>
+					{% endif %}
+			<div class="jumbotron" style="height: auto; padding-top: 5vh; padding-bottom: 5vh;" >
+				<center style="color: lightblue; font-size: 2rem">Sign In</center><br>
+				<center><img class="zoom color"src="{% static 'images/icon512.png' %}" width="100px"></center>
+				<form method="POST" style="width: 50%; margin: auto">
+					{% csrf_token %}
+					{% for field in form %}
+						{{ field.label_tag }}
+						{{ field }}
+					{% endfor %}
+					<br>
+					<center>
+						<button class="btn" type="submit" style="color: lightblue; padding-left: 40px; padding-right: 40px">SignIn</button>
+					</center>
+				</form>
+				<br>
+				<center>
+					<a href="{% url 'index' %}" style="color: #7a314f">Don't have an account ?</a>
+				</center>
+			</div>
+		</div>
+	</body>
+</html>
