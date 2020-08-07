@@ -15,7 +15,7 @@ class Property(models.Model):
 	state = models.CharField(max_length=50)
 	city = models.CharField(max_length=100, choices=cityOptions)
 	address = models.CharField(max_length=500)
-	contact = models.ChaField(max_length=10)
+	contact = models.CharField(max_length=10)
 	is_Vacant = models.IntegerField()
 	landLord = models.ForeignKey(myUser, on_delete=models.CASCADE)
 	image = models.ImageField(upload_to = "Property/",null="True")
