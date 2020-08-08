@@ -1,0 +1,168 @@
+body{
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: top;
+	background-image: url("../images/indexbackground.jpeg");
+	width: 100%;
+	height: 100%;
+	font-family: Arial, Helvetica;
+	letter-spacing: 0.02em;
+	font-weight: 400;
+	-webkit-font-smoothing: antialiased; 
+	height: 100vh; 
+	display: grid; 
+	align-items: center;
+}
+
+.jumbotron {
+	max-width: 700px;
+	min-width: 280px;
+	height: auto; 
+	margin: auto;
+	padding-top: 10vh;
+	padding-bottom: 10vh;
+	background-color: rgba(0,0,0,0.7);
+	border-radius: 10px
+}
+
+form {
+	width: 70%;
+	min-width: 250px;
+	max-width: 400px; 
+	margin: auto;
+}
+
+.btn {
+	background-color: #7a314f;
+	transition: 0.2s;
+}
+
+.btn:hover {
+	background-color: #552237;
+	transform: scale(1.02);
+}
+
+.mess {
+	width:50%; 
+	min-width: 280px; 
+	margin-left: auto; 
+	margin-right: auto;
+}
+
+.zoom {
+	border: 1px solid black;
+	border-radius: 5px;
+	transition: 0.2s;
+	box-shadow: 0px 0px 5px;
+}
+
+.zoom:hover {
+	border-radius: 5px;
+	transform: scale(1.01);
+	box-shadow: 0px 0px 10px;
+}
+
+.color {
+	background: linear-gradient(360deg, rgba(14,28,55,1) 3%, rgba(42,6,61,1) 3%, rgba(0,206,255,1) 100%);
+}
+
+option {
+	background-color: black;
+}
+
+/*.tilter {
+	position: relative;
+	display: block;
+	flex: none;
+	width: 300px;
+	height: 415px;
+	margin: 1.5em 2.5em;
+	color: #fff;
+	perspective: 1000px;
+}
+
+.tilter * {
+	pointer-events: none;
+}
+
+.tilter:hover,
+.tilter:focus {
+	color: #fff;
+	outline: none;
+}
+
+.tilter__figure,
+.tilter__image {
+	display: block;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+}
+
+.tilter__figure > * {
+	transform: translateZ(0px); /* Force correct stacking order */
+/*}
+
+.tilter__figure {
+	position: relative;
+}
+
+.tilter__figure::before {
+	content: '';
+	position: absolute;
+	top: 5%;
+	left: 5%;
+	width: 90%;
+	height: 90%;
+	box-shadow: 0 30px 20px rgba(35,32,39,0.5);
+}
+
+.tilter__deco {
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+}
+
+.tilter__deco--overlay {
+	background-image: linear-gradient(45deg, rgba(226, 60, 99, 0.4), rgba(145, 58, 252, 0.4), rgba(16, 11, 192, 0.4));
+}
+
+.tilter__deco--shine div {
+	position: absolute;
+	top: -50%;
+	left: -50%;
+	width: 200%;
+	height: 200%;
+	background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.5) 0%, rgba(255, 255, 255, 0.25) 50%, transparent 100%);
+}
+
+.tilter__deco--lines {
+	fill: none;
+	stroke: #fff;
+	stroke-width: 1.5px;
+}
+
+.tilter__caption {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	padding: 4em;
+}
+
+.tilter__title {
+	font-family: 'Abril Fatface', serif;
+	font-size: 2.5em;
+	font-weight: normal;
+	line-height: 1;
+	margin: 0;
+}
+
+.tilter__description {
+	font-size: 0.85em;
+	margin: 1em 0 0 0;
+	letter-spacing: 0.15em;
+}*/*/

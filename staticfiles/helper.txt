@@ -1,0 +1,1 @@
+I am created to make the static folder visible to GitHub :)
